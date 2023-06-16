@@ -32,4 +32,8 @@ Abrir nueva terminal e instalar dependencias y ejecutar preparación de base dat
 docker exec -it books-manager-app bash -c "./Docker/entrypoint.sh"
 ```
 
-Listo, puedes utilizar los diferentes endpoints en la carpeta postman collection.
+Listo, puedes utilizar los diferentes API endpoints en la carpeta postman collection.
+
+Tambien incluye vista web por medio del puerto 8080
+![image](https://github.com/AlexVentura-p/books-manager/assets/78453595/f3969706-dfc2-4919-afa2-2d90966da181)
+
