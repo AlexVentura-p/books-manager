@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title')->unique();
             $table->string('author');
-            $table->year('publication_year');
+            $table->smallInteger('publication_year');
             $table->timestamps();
         });
     }

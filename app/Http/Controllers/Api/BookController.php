@@ -20,12 +20,12 @@ class BookController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store()
     {
         $data = request()->validate([
             'title' => ['required','unique:books,title'],
             'author' => ['required'],
-            'publication_year' => ['required','date_format:YY']
+            'publication_year' => ['required','date_format:Y']
         ]);
 
         $book = Book::create($data);
@@ -36,24 +36,35 @@ class BookController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Book $book)
     {
-        //
+        return response($book);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Book $book)
     {
-        //
+        $data = request()->validate([
+            'title' => ['required','unique:books,title'],
+            'author' => ['required'],
+            'publication_year' => ['required','date_format:Y']
+        ]);
+
+        $book->update($data);
+
+        return response($book);
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Book $book)
     {
-        //
+        $book->delete($book);
+
+        return response('No content', 204);
     }
 }
