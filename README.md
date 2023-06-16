@@ -6,13 +6,27 @@
 - mysql 8.0
 - nginx
 
-## Instalación con docker
+## Instalación con docker (contiene php8.1-fpm, mysql y nginx)
+
+Crea archivo .env usando como base .env.example y coloca los datos de la base. Al usar docker DB_HOST debe ser mismo nombre del contenedor, en este caso en mysql y password no debe estar en blanco
+
+```
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=books_manager
+DB_USERNAME=root
+DB_PASSWORD=123
+```
+
 ``` 
 docker-compose up
 ```
 esperar a que la conección con mysql esté lista.
 
-Instalar dependencias y ejecutar preparación de base datos con sus tablas, para facilitar el proceso ello se puede ejecutar el script .sh en la carpeta Docker con el siguiente comando
+Abrir nueva terminal e instalar dependencias y ejecutar preparación de base datos con sus tablas, para facilitar el proceso ello se puede ejecutar el script .sh en la carpeta Docker con el siguiente comando
+
+(Al usar ubuntu como OS host asegurarse de tener permiso total a la carpeta del projecto, "permiso chmod -R 775 debería ser suficiente")
 
 ```
 docker exec -it books-manager-app bash -c "./Docker/entrypoint.sh"
